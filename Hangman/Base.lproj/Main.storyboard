@@ -52,6 +52,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="letterTextfiled" destination="W7g-0g-F0z" id="sMh-Jj-PHj"/>
+                        <outlet property="wordLabel" destination="fq2-au-evO" id="ClO-Wv-b1S"/>
+                        <outlet property="wrongsLabel" destination="RRw-Zq-1pZ" id="FUl-pZ-KYa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

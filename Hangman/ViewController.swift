@@ -9,6 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var letterTextfiled: UITextField!
+    @IBOutlet weak var wrongsLabel: UILabel!
+    var wrongs = 0 {
+        didSet {
+            wrongsLabel.text = "Wrongs: \(wrongs)/7"
+        }
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
