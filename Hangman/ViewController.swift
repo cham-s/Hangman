@@ -41,8 +41,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func setNewWord() {
         let index = Int.random(in: 0..<words.count)
         currentWord = Array(words.remove(at: index))
-        let blanks = String(repeating: "_ ", count: currentWord.count)
+        let blanks = String(repeating: "_", count: currentWord.count)
         wordLabel.text = blanks
+        print(currentWord)
     }
     
     func loadWordsDefault() {
@@ -58,8 +59,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         words.shuffle()
     }
     
-    @IBAction func submitTapped(_ sender: UIButton) {
+    func replaceLetter(_ letter: Character) {
+        var arrayWordLabel = Array(wordLabel.text!)
+        let indices = currentWord.enumerated().compactMap {
+            $0.element == letter ? $0.offset : nil
+        }
+        for i in indices {
+            arrayWordLabel[i] = letter
+        }
+        wordLabel.text = String(arrayWordLabel)
+    }
+    
+    func submit() {
         
     }
+    
+    @IBAction func submitTapped(_ sender: UIButton) {
+        if let text = letterTextfiled.text, let letter = text.first {
+            if !usedLetter.contains(letter) {
+                replaceLetter(letter)
+                usedLetter.append(letter)
+            } else {
+                //TODO: prompt for already used
+            }
+        }
+    }
 }
-
