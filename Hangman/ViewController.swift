@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var letterTextfiled: UITextField!
@@ -25,9 +25,17 @@ class ViewController: UIViewController {
     var usedWord = [String]()
     
     override func viewDidLoad() {
+        letterTextfiled.delegate = self
         super.viewDidLoad()
         loadWordsDefault()
         setNewWord()
+    }
+    
+    // Mark: TexField Delegate Method
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        textField.text = ""
+        return true
     }
     
     func setNewWord() {
@@ -48,6 +56,10 @@ class ViewController: UIViewController {
             words = ["hello", "world"]
         }
         words.shuffle()
+    }
+    
+    @IBAction func submitTapped(_ sender: UIButton) {
+        
     }
 }
 
