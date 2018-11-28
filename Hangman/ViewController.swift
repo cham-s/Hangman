@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var words = [String]()
     var usedLetter = [Character]()
     var currentWord = [Character]()
-    var usedWord = [String]()
+    //var usedWord = [String]()
     
     override func viewDidLoad() {
         letterTextfiled.delegate = self
@@ -74,13 +74,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func errorAlert(title: String, message: String)  {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Retry", style: .default))
+        present(ac, animated: true)
+    }
+    
     @IBAction func submitTapped(_ sender: UIButton) {
         if let text = letterTextfiled.text, let letter = text.first {
             if !usedLetter.contains(letter) {
                 replaceLetter(letter)
                 usedLetter.append(letter)
             } else {
-                //TODO: prompt for already used
+                errorAlert(title: "Letter Already Used", message: "Please pick another letter")
             }
         }
     }
